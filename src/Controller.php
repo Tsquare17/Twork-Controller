@@ -2,17 +2,14 @@
 
 namespace Twork\Controller;
 
+use stdClass;
+
 /**
  * Class Controller
  * @package Twork\Controller
  */
 abstract class Controller
 {
-    /**
-     * @var string Name of the blade template.
-     */
-    public $template;
-
     /**
      * Return an array of variables to pass to the template.
      *
@@ -129,9 +126,10 @@ abstract class Controller
     public function dispatch(): void
     {
         global $post;
+        $post->twork = new stdClass();
 
         foreach ($this->data() as $key => $value) {
-            $post->$key = $value;
+            $post->twork->$key = $value;
         }
     }
 }

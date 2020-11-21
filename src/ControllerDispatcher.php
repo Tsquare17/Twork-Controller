@@ -88,7 +88,6 @@ class ControllerDispatcher
         $templateFile  = end($array);
         $tworkTemplate = str_replace('.php', '', $templateFile);
 
-        // maybe just try to match the template to a controller, ie template = index, look for IndexController
         if (isset($this->templates[$tworkTemplate])) {
             $this->controller = $this->templates[$tworkTemplate];
 
