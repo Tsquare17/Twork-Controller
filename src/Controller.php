@@ -126,6 +126,12 @@ abstract class Controller
     public function dispatch(): void
     {
         global $post;
+
+        // Testing with WordPress Core, much of WordPress isn't loaded, so we'll do this to prevent errors during tests.
+        if ($post === null) {
+            $post = new stdClass();
+        }
+
         $post->twork = new stdClass();
 
         foreach ($this->data() as $key => $value) {

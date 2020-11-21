@@ -60,7 +60,19 @@ class ControllerDispatcher
      */
     public function __construct(array $config)
     {
-        foreach ($config['templates'] as $template => $controller) {
+        $this->templates = $config['templates'];
+
+        $this->addAjaxActions();
+
+        add_filter('template_include', [$this, 'controllerDispatcher']);
+    }
+
+    /**
+     * Register Ajax.
+     */
+    public function addAjaxActions(): void
+    {
+        foreach ($this->templates as $template => $controller) {
             foreach ($controller::ajaxMethods() as $method) {
                 add_action("wp_ajax_nopriv_{$method}", [$controller, $method]);
                 add_action("wp_ajax_{$method}", [$controller, $method]);
@@ -69,10 +81,6 @@ class ControllerDispatcher
                 add_action("wp_ajax_{$method}", [$controller, $method]);
             }
         }
-
-        $this->templates = $config['templates'];
-
-        add_filter('template_include', [$this, 'controllerDispatcher']);
     }
 
     /**
