@@ -46,7 +46,7 @@ class ControllerTest extends WP_UnitTestCase
             ]
         ]);
 
-        $controller->controllerDispatcher('front-page');
+        @$controller->controllerDispatcher('front-page');
 
         global $post;
 

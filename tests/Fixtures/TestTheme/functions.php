@@ -11,4 +11,4 @@ $controller = new ControllerDispatcher([
 
 // Because WordPress isn't completely loaded during test running, we have to run some things outside of hooks.
 $controller->addAjaxActions();
-$controller->controllerDispatcher('front-page');
+@$controller->controllerDispatcher('front-page');
