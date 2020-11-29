@@ -48,8 +48,8 @@ class ControllerTest extends WP_UnitTestCase
 
         @$controller->controllerDispatcher('front-page');
 
-        global $post;
+        global $twork;
 
-        $this->assertEquals('Twork', $post->twork->title);
+        $this->assertEquals('Twork', $twork->title);
     }
 }

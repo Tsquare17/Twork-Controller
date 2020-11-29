@@ -125,12 +125,12 @@ abstract class Controller
      */
     public function dispatch(): void
     {
-        global $post;
+        global $twork;
 
-        $post->twork = new stdClass();
+        $twork = new stdClass();
 
         foreach ($this->data() as $key => $value) {
-            $post->twork->$key = $value;
+            $twork->$key = $value;
         }
     }
 }
